@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recycling App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="video-container">
+        <video autoplay muted loop id="bg-video">
+            <source src="10170428-uhd_2560_1440_25fps.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+    </div>
+    <div class="container">
+        <div class="search-bar">
+            <input type="text" placeholder="Search for the nearest location...">
+            <button class="search-button">🔍</button>
+        </div>
+        <h1>What do you want to recycle today?</h1>
+        <div class="buttons">
+            <button class="recycle-button">Plastic</button>
+            <button class="recycle-button">Cardboard</button>
+            <button class="recycle-button">Cans</button>
+            <button class="recycle-button">Glass</button>
+            <button class="recycle-button">Paper</button>
+            <button class="recycle-button">Food Waste</button>
+            <button class="recycle-button">Other</button>
+        </div>
+    </div>
+</body>
+</html>
