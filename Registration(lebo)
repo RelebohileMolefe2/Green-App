@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="Registration.css">
+
+</head>
+<body>
+    <div class="form-container">
+        <h2>Register</h2>
+        <form id="registrationForm" action="welcome.html" method="POST">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+				<span class="error" id="nameError"></span>
+            </div>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+				<span class="error" id="usernameError"></span>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+				 <span class="error" id="passwordError"></span>
+            </div>
+            <div class="form-group">
+                <label for="confirm_password">Confirm Password</label>
+                <input type="password" id="confirm_password" name="confirm_password" required>
+				<span class="error" id="confirmPasswordError"></span>
+            </div>
+            <div class="text-center">
+                <button type="submit">Next</button>
+				<span class="success" id="formSuccess"></span>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('registrationForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                let isValid = true;
+
+                // Clear previous error messages
+                document.getElementById('nameError').textContent = '';
+                document.getElementById('usernameError').textContent = '';
+                document.getElementById('passwordError').textContent = '';
+                document.getElementById('confirmPasswordError').textContent = '';
+                document.getElementById('formSuccess').textContent = '';
+
+                // Validate name
+                const name = document.getElementById('name').value;
+                if (name.trim() === '') {
+                    document.getElementById('nameError').textContent = 'Name is required.';
+                    isValid = false;
+                }
+
+                // Validate username
+                const username = document.getElementById('username').value;
+                if (username.trim() === '') {
+                    document.getElementById('usernameError').textContent = 'Username is required.';
+                    isValid = false;
+                }else if (!/\d/.test(username)) {
+    document.getElementById('usernameError').textContent = 'Username must contain at least one number.';
+    isValid = false;
+}
+
+                // Validate password
+                const password = document.getElementById('password').value;
+                if (password.trim() === '') {
+                    document.getElementById('passwordError').textContent = 'Password is required.';
+                    isValid = false;
+                } else if (password.length < 6) {
+                    document.getElementById('passwordError').textContent = 'Password must be at least 6 characters long.';
+                    isValid = false;
+                }
+
+                // Validate confirm password
+                const confirmPassword = document.getElementById('confirm_password').value;
+                if (confirmPassword.trim() === '') {
+                    document.getElementById('confirmPasswordError').textContent = 'Confirm password is required.';
+                    isValid = false;
+                } else if (password !== confirmPassword) {
+                    document.getElementById('confirmPasswordError').textContent = 'Passwords do not match.';
+                    isValid = false;
+                }
+
+                // Show success message if valid
+                if (isValid) {
+                    document.getElementById('formSuccess').textContent = 'Registration successful!';
+                    // Submit the form data to a server here
+                    this.submit();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
